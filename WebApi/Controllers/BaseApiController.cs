@@ -20,5 +20,15 @@ namespace WebApi.Controllers
         {
             return ControllerContext.Request.CreateResponse(HttpStatusCode.NotFound);
         }
+
+        public HttpResponseMessage AlreadyExists()
+        {
+            return ControllerContext.Request.CreateResponse(HttpStatusCode.Conflict,"Record with the same Id already exits.");
+        }
+
+        public HttpResponseMessage RequestBad(string message)
+        {
+            return ControllerContext.Request.CreateResponse(HttpStatusCode.BadRequest, message);
+        }
     }
 }
