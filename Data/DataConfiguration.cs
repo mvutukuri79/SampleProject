@@ -18,6 +18,8 @@ namespace Data
             container.RegisterSingleton<IListTypeLookup<Assembly>, ListTypeLookup<Assembly>>();
 
             InitializeAssemblyInstancesService.RegisterAssemblyWithSerializableTypes(container, typeof(User).Assembly);
+            //InitializeAssemblyInstancesService.RegisterAssemblyWithSerializableTypes(container, typeof(Order).Assembly);
+            //InitializeAssemblyInstancesService.RegisterAssemblyWithSerializableTypes(container, typeof(Product).Assembly);
             InitializeAssemblyInstancesService.RegisterAssemblyWithSerializableTypes(container, assembly);
 
             InitializeAssemblyInstancesService.Initialize(container, lifestyle, assembly);

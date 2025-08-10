@@ -1,10 +1,13 @@
-﻿using System;
+﻿using BusinessEntities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Core.Services.Products
 {
-    public class ICreateOrders
+    public interface ICreateProductService
     {
+        Product Create(Guid productId, string productName, string productCategory,
+                            decimal price, string description,int? productQuantity);
     }
 }

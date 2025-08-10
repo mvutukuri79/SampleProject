@@ -12,13 +12,7 @@ namespace Core.Services.Users
         {
             user.SetEmail(email);
             user.SetName(name);
-            user.SetType(type);         
-            
-            if (annualSalary is null)
-            {
-                throw new ArgumentNullException("Annual Salary is not provided.");
-            }
-
+            user.SetType(type);
             user.SetMonthlySalary(annualSalary.Value / 12);
             user.SetTags(tags);
             user.SetAge(age);

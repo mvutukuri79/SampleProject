@@ -1,15 +1,15 @@
-﻿using System;
+﻿using BusinessEntities;
+using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
+using System.Linq;
+using System.Web;
 
-namespace BusinessEntities
+namespace WebApi.Models.Orders
 {
-    public class Order : IdObject
-    {       
-        //public Guid Id { get; set; }        
+    public class OrderModel
+    {
+        public Guid OrderId { get; set; }
         public string OrderNumber { get; set; }
-
         public string CustomerName { get; set; }
         public DateTime OrderDate { get; set; }
         public List<Product> Products { get; set; } = new List<Product>();

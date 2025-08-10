@@ -17,7 +17,12 @@ namespace WebApi.Controllers
         private readonly IGetUserService _getUserService;
         private readonly IUpdateUserService _updateUserService;
 
-        public UserController(ICreateUserService createUserService, IDeleteUserService deleteUserService, IGetUserService getUserService, IUpdateUserService updateUserService)
+        public UserController(
+            ICreateUserService createUserService,
+            IDeleteUserService deleteUserService,
+            IGetUserService getUserService,
+            IUpdateUserService updateUserService
+            )
         {
             _createUserService = createUserService;
             _deleteUserService = deleteUserService;

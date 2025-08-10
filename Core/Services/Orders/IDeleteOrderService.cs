@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Core.Services.Orders
 {
-    public class IDeleteOrderService
+    public interface IDeleteOrderService
     {
+        void Delete(int orderId);
     }
 }

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BusinessEntities;
 
 namespace Core.Services.Products
 {
-    public class IDeleteOrder
+    public interface IDeleteProductService
     {
+        void Delete(Product product);
+        void DeleteAll();
     }
 }

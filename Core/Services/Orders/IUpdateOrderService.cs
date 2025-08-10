@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BusinessEntities;
 
 namespace Core.Services.Orders
 {
-    public class IUpdateOrderService
+    public interface IUpdateOrderService
     {
+        void UpdateOrder(Guid orderId, string customerName, DateTime orderDate,
+                             List<Product> orderItems);
     }
 }
