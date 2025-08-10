@@ -3,30 +3,43 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using BusinessEntities;
+using Common;
+using Data.Indexes;
+using System.Linq;
+
 
 namespace Data.Repositories
 {
-    public class OrderRepository: IOrderRepository
+    [AutoRegister]
+    public class OrderRepository: Repository<Order>, IOrderRepository
     {
         private readonly IDocumentSession _documentSession; 
-        public OrderRepository(IDocumentSession documentSession)
-        {   _documentSession = documentSession; 
-        
-        }    
+        public OrderRepository(IDocumentSession documentSession): base(documentSession)
+        {   
+            _documentSession = documentSession;         
+        } 
 
-        public Order GetOrder(int orderId)
+        public IEnumerable<Order> GetOrders(Guid? clientId, Guid? productId)
         {
-            //if (order == null) throw new ArgumentNullException(nameof(order));
-            //_documentSession.Store(order);
-            return new Order();
-        }   
+            var query = _documentSession.Advanced.DocumentQuery<Order, OrderListIndex>();
+            var whareCondition = false;
+            if ( clientId != Guid.Empty)
+            {
+                query = query.WhereEquals("UserId", clientId.ToString());
+                whareCondition = true;
+            }
 
-        public IEnumerable<Order> GetOrders(int? orderId,DateTime? orderDate)
-        {
-            //if (string.IsNullOrEmpty(orderId)) throw new ArgumentNullException(nameof(orderId));
-            //return _documentSession.Load<Order>(orderId);
-            List<Order> orders = new List<Order>();
-            return orders;
+            if (productId != Guid.Empty)
+            {
+                query = query.WhereEquals("ProductId", productId.ToString());
+                whareCondition = true;
+            }           
+
+            return query.ToList();            
         }
+        public void DeleteAll()
+        {
+            base.DeleteAll<OrderListIndex>();
+        }   
     }
 }

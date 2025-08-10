@@ -1,42 +1,38 @@
 ﻿using BusinessEntities;
 using Common;
+using Core.Factories;
+using Data.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Text;
+using Core.Services.Products;
 
 namespace Core.Services.Orders
 {
     [AutoRegister]
     public class CreateOrderService : ICreateOrderService
     {
-        private readonly ICreateOrderService _createOrderService;
-        //private readonly IDeleteOrderService _deleteOrderService;
-        //private readonly IGetOrderService _getOrderService;
-        //private readonly IUpdateOrderService _updateOrderService;
+        private readonly IOrderRepository _orderRepository;
+        private readonly IUpdateOrderService _updateOrderService;    
+        private readonly IIdObjectFactory<Order> _orderFactory;
 
-        public CreateOrderService(ICreateOrderService createOrderService
-            //, IDeleteOrderService deleteOrderService, IGetOrderService getOrderService, 
-            //IUpdateOrderService updateOrderService
-            )
+        public CreateOrderService(
+            IOrderRepository orderRepository, 
+            IUpdateOrderService updateOrderService,
+            IIdObjectFactory<Order> objectFactory)
         {
-            _createOrderService = createOrderService;
-            //_deleteOrderService = deleteOrderService;
-            //_getOrderService = getOrderService;
-            //_updateOrderService = updateOrderService;
-            // Constructor logic here
+            _orderRepository = orderRepository;
+            _updateOrderService = updateOrderService;
+            _orderFactory = objectFactory;
         }
 
-        public void Create(Guid orderId, string customerName, DateTime orderDate,
-                            List<Product> orderItems)
+        public Order Create(Guid orderId,Guid userId, Guid productId, int quantity, decimal price)
         {
-            // Logic to create an order
-            var order =  new Order
-            {
-                OrderId = orderId,
-                CustomerName = customerName,
-                OrderDate = orderDate,
-                Products = orderItems
-            };
+            var  order = _orderFactory.Create(orderId);
+            _updateOrderService.Update(order, userId,productId, quantity,price);
+            _orderRepository.Save(order);
+            return order;
         }
     }
 }

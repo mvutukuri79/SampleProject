@@ -1,6 +1,7 @@
 ﻿using BusinessEntities;
 using Core.Services.Users;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -83,7 +84,8 @@ namespace WebApi.Controllers
 
         [Route("list")]
         [HttpGet]
-        public HttpResponseMessage GetUsers(int skip, int take, UserTypes? type = null, string name = null, string email = null)
+        public HttpResponseMessage GetUsers(int skip, int take, UserTypes? type = null, 
+            string name = null, string email = null)
         {
             var users = _getUserService.GetUsers(type, name, email)
                                        .Skip(skip).Take(take)
@@ -104,7 +106,19 @@ namespace WebApi.Controllers
         [HttpGet]
         public HttpResponseMessage GetUsersByTag(string tag)
         {
-            throw new NotImplementedException();
+            if(string.IsNullOrEmpty(tag))
+            {
+                return RequestBad("Tag cannot be null or empty.");
+            }
+
+            //var usersList=  _getUserService.GetUsers(null,null,null,tag)
+            //    .Select(q => new UserData(q))
+            //    .ToList();
+            var usersList = _getUserService.GetUsersByTag(tag)
+                .Select(q => new UserData(q))
+                .ToList();
+            return Found(usersList);
+            
         }
     }
 }

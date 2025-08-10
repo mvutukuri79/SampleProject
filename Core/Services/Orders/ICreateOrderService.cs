@@ -9,8 +9,6 @@ namespace Core.Services.Orders
    
     public interface ICreateOrderService
     {
-         void Create(Guid orderId, string customerName, 
-                DateTime orderDate, 
-                List<Product> products);
+         Order Create(Guid orderId,Guid UserId, Guid ProductId, int Quantity, decimal Price);
     }
 }

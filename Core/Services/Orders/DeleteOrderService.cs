@@ -2,22 +2,26 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Data.Repositories;
+using BusinessEntities;
 
 namespace Core.Services.Orders
 {
     [AutoRegister]
     public class DeleteOrderService : IDeleteOrderService
     {
-        private readonly IDeleteOrderService _deleteOrderService;
-        public DeleteOrderService(IDeleteOrderService deleteOrderService)
+        private readonly IOrderRepository _orderRepository;
+        private readonly IGetOrderService _getOrderService;
+        public DeleteOrderService(IOrderRepository orderRepository, 
+            IGetOrderService getOrderService)
         {
-            _deleteOrderService = deleteOrderService;
+            _orderRepository = orderRepository;
+            _getOrderService = getOrderService;
         }
 
-        public void Delete(int orderId)
-        {
-            // Logic to delete an order
-            //_deleteOrderService.Delete(orderId);
+        public void Delete(Order order)
+        {           
+            _orderRepository.Delete(order);
         }
     }
 }

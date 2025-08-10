@@ -9,27 +9,14 @@ namespace Core.Services.Orders
     [AutoRegister]
     public class UpdateOrderService: IUpdateOrderService
     {
-        private readonly IUpdateOrderService _updateOrderService;
-        public UpdateOrderService(IUpdateOrderService updateOrderService)
+        public void Update(Order order, Guid userId, Guid productId, 
+            int quantity, decimal price)
         {
-            _updateOrderService = updateOrderService;
-        }
-
-        void IUpdateOrderService.UpdateOrder(Guid orderId, string customerName, DateTime orderDate,
-                             List<Product> orderItems)
-        {
-            // Logic to update an order
-            var order = new Order
-            {
-                OrderId = orderId,
-                CustomerName = customerName,
-                OrderDate = orderDate,
-                //Products = orderItems
-            };
-            // Call the service to update the order
-            //_updateOrderService.Update(orderId, customerName, orderDate, orderItems);
-            Console.WriteLine($"Order {orderId} updated successfully.");
-        }
-        
+           order.UserId = userId;
+            order.ProductId = productId;
+            order.Quantity = quantity;
+            order.Price = price;
+            order.OrderDate = DateTime.UtcNow; 
+        }        
     }
 }

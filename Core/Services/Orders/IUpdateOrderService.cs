@@ -7,7 +7,6 @@ namespace Core.Services.Orders
 {
     public interface IUpdateOrderService
     {
-        void UpdateOrder(Guid orderId, string customerName, DateTime orderDate,
-                             List<Product> orderItems);
+        void Update(Order order,Guid userId, Guid productId,int quantity, decimal price);
     }
 }

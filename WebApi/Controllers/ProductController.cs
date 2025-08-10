@@ -99,12 +99,13 @@ namespace WebApi.Controllers
 
         [Route("list")]
         [HttpGet]
-        public HttpResponseMessage GetProducts(
-            string productCategory = null,
-            string productName = null)
+        public HttpResponseMessage GetProducts([FromBody] ProductModel model
+            //string productCategory = null,
+            //string productName = null
+            )
         {
             var products = _getProductService
-                .GetProducts(productCategory, productName)
+                .GetProducts(model.ProductCategory, model.ProductName)
                 //.Skip(2)
                 .Select(p => new ProductData(p)).ToList();
 

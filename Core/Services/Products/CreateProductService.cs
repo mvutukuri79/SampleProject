@@ -25,11 +25,11 @@ namespace Core.Services.Products
 
         public Product Create(Guid productId, string productName, 
             string productCategory, 
-            decimal price, string description, int? productQuantity)
+            decimal price, string description, int? quantity)
         {
             var product = _productFactory.Create(productId);
             _updateProductService.Update(product, productName,
-                productCategory, price,description, productQuantity);
+                productCategory, price,description, quantity);
             _productRepository.Save(product);
             return product;
         }

@@ -24,14 +24,6 @@ namespace Core.Services.Products
         {
             var product = _productRepository.Get(productId);
             return product;
-            //return new Product
-            //{
-            //    ProductId = productId,
-            //    ProductName = "Sample Product",
-            //    Price = 9.99m,
-            //    Description = "sample product",
-            //    Quantity = 100
-            //};
         }
 
         public IEnumerable<Product> GetProducts(string productCategory = null, string productName = null)

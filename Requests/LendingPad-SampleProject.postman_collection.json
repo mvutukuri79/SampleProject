@@ -1,0 +1,621 @@
+{
+	"info": {
+		"_postman_id": "d4d6417d-d95f-4d56-bd34-b0e57783fceb",
+		"name": "LendingPad-SampleProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47399201",
+		"_collection_link": "https://mdharv-9254072.postman.co/workspace/Muralidhar-Vutukuri's-Workspace~899d58b1-cf28-43da-8857-b7de89824897/collection/47399201-d4d6417d-d95f-4d56-bd34-b0e57783fceb?action=share&source=collection_link&creator=47399201"
+	},
+	"item": [
+		{
+			"name": "Initialize Sample Data",
+			"item": [
+				{
+					"name": "Clear Users",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:49834/users/clear",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"clear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User - John",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"John Smith\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 2,\r\n    \"age\": 27,\r\n    \"annualSalary\": 72000,\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49834/users/1422740e-6426-4c46-8445-3f5274a62424/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"1422740e-6426-4c46-8445-3f5274a62424",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User - Mark",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mark Williams\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 35,\r\n    \"annualSalary\": 120000,\r\n    \"tags\": [\"b\", \"c\", \"e\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49834/users/9422740e-6426-4c46-8445-3f5274a62424/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"9422740e-6426-4c46-8445-3f5274a62424",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User - Andy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Andy\",\r\n    \"email\": \"andy@companya.com\",\r\n    \"type\": 2,\r\n    \"age\": 34,\r\n    \"annualSalary\": 86000,\r\n    \"tags\": [\"D\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49834/users/8722740e-6426-4c46-8445-3f5274a62424/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"8722740e-6426-4c46-8445-3f5274a62424",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "//The exception \"PUT attempted on document 'users/1422740e-6426-4c46-8445-3f5274a62424' using a non current etag\" means that the record with the same ID already exists.\r\n{\r\n    \"name\": \"Mary\",\r\n    \"email\": \"mary@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 29,\r\n    \"annualSalary\": 80000,\r\n    \"tags\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49834/users/1422740e-6426-4c46-8445-3f5274a62424/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"1422740e-6426-4c46-8445-3f5274a62424",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User - A",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mark Williams (updated)\",\r\n    \"email\": null,\r\n    \"type\": 2,\r\n    \"age\": 29,\r\n    \"annualSalary\": 80000,\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49834/users/9422740e-6426-4c46-8445-3f5274a62424/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"9422740e-6426-4c46-8445-3f5274a62424",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User - B",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mark Williams\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 29,\r\n    \"annualSalary\": null,\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49834/users/9422740e-6426-4c46-8445-3f5274a62424/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"9422740e-6426-4c46-8445-3f5274a62424",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User - C",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mark Williams\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 29,\r\n    \"annualSalary\": 152000,\r\n    \"tags\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49834/users/9422740e-6426-4c46-8445-3f5274a62424/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"9422740e-6426-4c46-8445-3f5274a62424",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users By Tag",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:49834/users/list/tag?tag=C",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"list",
+								"tag"
+							],
+							"query": [
+								{
+									"key": "tag",
+									"value": "C"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Requests",
+			"item": [
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "Create Product -Cough Syrup",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \r\n  \"productName\": \"Corn\",\r\n  \"productCategory\": \"Food\",\r\n  \"price\": 53.0,\r\n  \"description\": \"Corn from America\",\r\n  \"quantity\": 100\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:49834/products/1422740e-6426-4c46-8445-3f5274a62424/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"products",
+										"1422740e-6426-4c46-8445-3f5274a62424",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Product - Cough Syrup",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"productName\": \"Cough Syrup\",\r\n  \"productCategory\": \"Medicine\",\r\n  \"price\": 53.0,\r\n  \"description\": \"Cough Syrup for children\",\r\n  \"quantity\": 100\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:49834/products/1422740e-6426-4c46-8445-3f5274a62424/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"products",
+										"1422740e-6426-4c46-8445-3f5274a62424",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Product",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:49834/products/1422740e-6426-4c46-8445-3f5274a62424/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"products",
+										"1422740e-6426-4c46-8445-3f5274a62424",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Product By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:49834/products/1422740e-6426-4c46-8445-3f5274a62424/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"products",
+										"1422740e-6426-4c46-8445-3f5274a62424",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Product List",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"productName\": \"\",\r\n  \"productCategory\": \"Medicine\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:49834/products/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"products",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Product - Rice",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"productName\": \"Rice\",\r\n  \"productCategory\": \"Food\",\r\n  \"price\": 22.29,\r\n  \"description\": \"Rice\",\r\n  \"quantity\": 100\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:49834/products/1422740e-6426-4c46-8445-3f5274a62426/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"products",
+										"1422740e-6426-4c46-8445-3f5274a62426",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Product - Rice",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"productName\": \"Rice\",\r\n  \"productCategory\": \"Food\",\r\n  \"price\": 22.29,\r\n  \"description\": \"Imported rice\",\r\n  \"quantity\": 1000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:49834/products/1422740e-6426-4c46-8445-3f5274a62426/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"products",
+										"1422740e-6426-4c46-8445-3f5274a62426",
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "Create Order - A",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"9422740e-6426-4c46-8445-3f5274a62424\", //Mark\r\n    \"productId\": \"1422740e-6426-4c46-8445-3f5274a62428\", //Rice\r\n    \"quantity\": 2,\r\n    \"price\": 4.23\r\n\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:49834/orders/1502740e-6426-4c46-8445-3f5274a62426/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"orders",
+										"1502740e-6426-4c46-8445-3f5274a62426",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Order - A",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"9422740e-6426-4c46-8445-3f5274a62424\", //Mark\r\n    \"productId\": \"1422740e-6426-4c46-8445-3f5274a62428\", //Rice\r\n    \"quantity\": 45,\r\n    \"price\": 4.79\r\n\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:49834/orders/1502740e-6426-4c46-8445-3f5274a62426/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"orders",
+										"1502740e-6426-4c46-8445-3f5274a62426",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Order - A",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:49834/orders/1502740e-6426-4c46-8445-3f5274a62466/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"orders",
+										"1502740e-6426-4c46-8445-3f5274a62466",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Order By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:49834/orders/1502740e-6426-4c46-8445-3f5274a62466/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"orders",
+										"1502740e-6426-4c46-8445-3f5274a62466",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Order List",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"\",                          //9422740e-6426-4c46-8445-3f5274a62424 - Mark williams\r\n    \"productId\": \"1422740e-6426-4c46-8445-3f5274a62428\" // Cough Syrup    \r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:49834/orders/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"orders",
+										"list"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using BusinessEntities;
+using Data.Indexes;
 
 
 namespace WebApi.Models.Orders
@@ -11,17 +12,17 @@ namespace WebApi.Models.Orders
     {
         public OrderData(Order order) : base(order)
         {
-            OrderNumber = order.OrderNumber;
-            CustomerName = order.CustomerName;
+            UserId = order.UserId;
             OrderDate = order.OrderDate;
-            TotalAmount = order.TotalAmount;
-            //Products = order.Products.Select(p => new ProductData(p)).ToList();
+            ProductId = order.ProductId;
+            Price = order.Price;
+            Quantity = order.Quantity;
         }
-        public string OrderNumber { get; set; }
-        public string CustomerName { get; set; }
-        public DateTime OrderDate { get; set; }
 
-        //public List<ProductData> Products { get; set; } = new List<ProductData>();
-        public decimal TotalAmount { get; set; }
+        public Guid UserId { get; }
+        public DateTime OrderDate { get; set; }
+        public Guid ProductId { get; set; }
+        public int Quantity { get; set; }
+        public decimal Price { get; set; }
     }
 }

@@ -5,9 +5,9 @@ using BusinessEntities;
 
 namespace Data.Repositories
 {
-    public interface IOrderRepository
+    public interface IOrderRepository: IRepository<Order>
     {
-         Order GetOrder(int orderId);
-        IEnumerable<Order> GetOrders(int? orderId, DateTime? orderDate);
+        IEnumerable<Order> GetOrders(Guid? userId, Guid? productId);
+        void DeleteAll();
     }
 }

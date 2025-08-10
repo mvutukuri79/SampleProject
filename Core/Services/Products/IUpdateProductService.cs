@@ -9,6 +9,6 @@ namespace Core.Services.Products
     {
         void Update(Product product, string productName, string productCategory,
             decimal price, string description, 
-                             int? stockQuantity=null);
+                             int? quantity);
     }
 }

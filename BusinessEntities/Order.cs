@@ -6,13 +6,14 @@ using System.Text;
 namespace BusinessEntities
 {
     public class Order : IdObject
-    {       
+    {
         //public Guid Id { get; set; }        
-        public string OrderNumber { get; set; }
-
-        public string CustomerName { get; set; }
-        public DateTime OrderDate { get; set; }
-        public List<Product> Products { get; set; } = new List<Product>();
-        public decimal TotalAmount { get; set; }
+        //public string OrderNumber { get; set; }
+        public  Guid UserId { get; set; } //Id of the customer       
+        public DateTime OrderDate { get; set; } // date of order creation
+        public Guid  ProductId { get; set; }
+        public int Quantity { get; set; } // quantity ordered
+        public decimal Price { get; set; } // order table should have product price
+        
     }
 }
