@@ -162,7 +162,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Mark Williams (updated)\",\r\n    \"email\": null,\r\n    \"type\": 2,\r\n    \"age\": 29,\r\n    \"annualSalary\": 80000,\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
+							"raw": "{\r\n    \"name\": \"Mark Williams (updated)\",\r\n    \"email\": null, //mark@companya.com\r\n    \"type\": 2,\r\n    \"age\": 29,\r\n    \"annualSalary\": 80000,\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -192,7 +192,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Mark Williams\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 29,\r\n    \"annualSalary\": null,\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
+							"raw": "{\r\n    \"name\": \"Mark Williams\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 29,\r\n    \"annualSalary\": 100000, //null\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -222,7 +222,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Mark Williams\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 29,\r\n    \"annualSalary\": 152000,\r\n    \"tags\": null\r\n}",
+							"raw": "{\r\n    \"name\": \"Mark Williams\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 29,\r\n    \"annualSalary\": 152000,\r\n    \"tags\": [\"A\",\"B\"] //[\"A\"] null\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -251,7 +251,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:49834/users/list/tag?tag=C",
+							"raw": "http://localhost:49834/users/list/tag?tag=A",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -265,7 +265,7 @@
 							"query": [
 								{
 									"key": "tag",
-									"value": "C"
+									"value": "A"
 								}
 							]
 						}
@@ -317,7 +317,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"productName\": \"Cough Syrup\",\r\n  \"productCategory\": \"Medicine\",\r\n  \"price\": 53.0,\r\n  \"description\": \"Cough Syrup for children\",\r\n  \"quantity\": 100\r\n}",
+									"raw": "{\r\n  \"productName\": \"Cough Syrup\",\r\n  \"productCategory\": \"Medicine\",\r\n  \"price\": 55.0, // quantity changed\r\n  \"description\": \"Cough Syrup for children\",\r\n  \"quantity\": 100\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -510,13 +510,13 @@
 							"response": []
 						},
 						{
-							"name": "Update Order - A",
+							"name": "Create Order - B",
 							"request": {
-								"method": "PUT",
+								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"userId\": \"9422740e-6426-4c46-8445-3f5274a62424\", //Mark\r\n    \"productId\": \"1422740e-6426-4c46-8445-3f5274a62428\", //Rice\r\n    \"quantity\": 45,\r\n    \"price\": 4.79\r\n\r\n}\r\n",
+									"raw": "{\r\n    \"userId\": \"8722740e-6426-4c46-8445-3f5274a62424\", //Andy\r\n    \"productId\": \"1422740e-6426-4c46-8445-3f5274a62426\", //Rice\r\n    \"quantity\": 20,\r\n    \"price\": 14.23\r\n\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -524,7 +524,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:49834/orders/1502740e-6426-4c46-8445-3f5274a62426/update",
+									"raw": "http://localhost:49834/orders/1502740e-6426-4c46-8445-3f5274a62426/create",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -533,6 +533,36 @@
 									"path": [
 										"orders",
 										"1502740e-6426-4c46-8445-3f5274a62426",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Order - A",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"9422740e-6426-4c46-8445-3f5274a62424\", //Mark\r\n    \"productId\": \"1422740e-6426-4c46-8445-3f5274a62426\", //Rice\r\n    \"quantity\": 6, // changed\r\n    \"price\": 43.79 // changed\r\n\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:49834/orders/1502740e-6426-4c46-8445-3f5274a62466/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49834",
+									"path": [
+										"orders",
+										"1502740e-6426-4c46-8445-3f5274a62466",
 										"update"
 									]
 								}
@@ -591,7 +621,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"userId\": \"\",                          //9422740e-6426-4c46-8445-3f5274a62424 - Mark williams\r\n    \"productId\": \"1422740e-6426-4c46-8445-3f5274a62428\" // Cough Syrup    \r\n\r\n}",
+									"raw": "{\r\n    \"userId\": \"9422740e-6426-4c46-8445-3f5274a62424\",                          //9422740e-6426-4c46-8445-3f5274a62424 - Mark williams\r\n    \"productId\": \"\" // 1422740e-6426-4c46-8445-3f5274a62426    \r\n\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"

@@ -17,7 +17,7 @@ namespace Data.Indexes
                                       user.Type
                                   };
 
-            Index(x => x.Type, FieldIndexing.Analyzed);
+            Index(x => x.Type, FieldIndexing.NotAnalyzed);
         }
     }
 }

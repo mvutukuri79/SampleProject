@@ -17,14 +17,14 @@ namespace Data.Indexes
                                    {
                                        order.Id, // order id
                                        order.UserId, // customer id
-                                       order.ProductId, // product id
-                                       order.Price, // price
-                                       order.Quantity, // quantity
-                                       order.OrderDate // date of order creation
+                                       order.ProductId//, // product id
+                                       //order.Price, // price
+                                       //order.Quantity, // quantity
+                                       //order.OrderDate // date of order creation
                             };
-            Index(x => x.Id, FieldIndexing.NotAnalyzed);
-            Index(x => x.UserId, FieldIndexing.NotAnalyzed);
-            Index(x => x.ProductId, FieldIndexing.NotAnalyzed);
+            //Index(x => x.Id, FieldIndexing.NotAnalyzed);
+            //Index(x => x.UserId, FieldIndexing.NotAnalyzed);
+            //Index(x => x.ProductId, FieldIndexing.NotAnalyzed);
         }
     }
 }

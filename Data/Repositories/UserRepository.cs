@@ -51,16 +51,8 @@ namespace Data.Repositories
                 }
                 query = query.WhereEquals("Email", email);
             }
-            //if (tag != null)
-            //{
-            //    if (hasFirstParameter)
-            //    {
-            //        query = query.AndAlso();
-            //    }
-            //    query = query.Where($"Tags:*{tag}*");
-            //    //query = query.WhereIn("Tags", tag);
-            //}
             return query.ToList();
+
         }
 
         public void DeleteAll()
@@ -70,11 +62,7 @@ namespace Data.Repositories
 
         public IEnumerable<User> GetByTag(string tag)
         {
-            var query = _documentSession.Advanced.DocumentQuery<User, UsersListIndex>();
-            if (tag != null)
-            {
-                query = query.Where($"Tags:*{tag}*");
-            }
+            var query = _documentSession.Query<User>().Where(x => x.Tags.Contains(tag));           
             return query.ToList();
         }
     }

@@ -110,10 +110,6 @@ namespace WebApi.Controllers
             {
                 return RequestBad("Tag cannot be null or empty.");
             }
-
-            //var usersList=  _getUserService.GetUsers(null,null,null,tag)
-            //    .Select(q => new UserData(q))
-            //    .ToList();
             var usersList = _getUserService.GetUsersByTag(tag)
                 .Select(q => new UserData(q))
                 .ToList();
